@@ -26,11 +26,13 @@
                                 <label>Username</label>
                             </div>
                             <div class="user-box">
-                                <input type="text" name="Password" id="Password" autocomplete="off">
+                                <input type="password" name="Password" id="Password" autocomplete="off">
                                 <label>Password</label>
                             </div>
-                            <div class-"user-box">
+                            <div class="user-box">
                                 <button type="submit" class="wide-button">Login</button>
+                            </div>
+                            <div class="user-box">
                                 <div class="sys-msg"></div>
                             </div>
                         </form>
@@ -43,4 +45,39 @@
         </div>
         <!-- wrapper ends  -->
     </body>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#myForm").on("submit", function() {
+                event.preventDefault();
+                let error = false;
+                let Username = $("#Username");
+                let Password = $("#Password");
+                
+                if (Username.val().trim() == "" || Username.val().trim() == null) {
+                    error = true;
+                    $(".sys-msg").html("Please enter your Username!");
+                    $(".sys-msg").addClass("error");
+                }
+
+                if (Password.val().trim() == "" || Password.val().trim() == null) {
+                    error = true;
+                    $(".sys-msg").html("Please enter your Password!");
+                    $(".sys-msg").addClass("error");
+                }
+
+                if (error == false) {
+                    $.ajax({
+                        url: "./php/login.php",
+                        type: "post",
+                        data: $(this).serialize(),
+                        success: function (e) {
+                            $(".sys-msg").html(e);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </html>

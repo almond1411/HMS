@@ -1,4 +1,5 @@
-*{
+* {
+
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -9,6 +10,9 @@
     --button-color: #e9e9ed;
     --menu-bar: #0F52BA;
     --form-background: #fbfbfb;
+    --color1: #03e9f4;
+    --color2: #ad44ef;
+    --color3: #1c99f6;
 }
 
 body {
@@ -28,7 +32,7 @@ body {
     width: 400px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,.5);
+    background: rgba(255,255,255,.5);
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
 }
@@ -36,7 +40,7 @@ body {
 .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
-    color: #fff;
+    color: black;
     text-align: center;
 }
 
@@ -48,11 +52,11 @@ body {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
+    color: rgb(0,0,0);
     margin-bottom: 30px;
     margin-top: 24px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--color1);
     outline: none;
     background: transparent;
 }
@@ -72,13 +76,23 @@ body {
 .login-box .user-box > input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #03e9f4;
+    color: black;
     font-size: 18px;
 }
-
 
 .wide-button {
     width: 100%;
     padding: 12px;
     font-size: 15px;
+    background-color: var(--color3);
+    color: white;
+}
+
+.sys-msg {
+    padding: 12px;
+    text-align: center;
+}
+
+.error {
+    color: red;
 }
