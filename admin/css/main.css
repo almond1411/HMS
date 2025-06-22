@@ -10,9 +10,10 @@
     --button-color: #e9e9ed;
     --menu-bar: #0F52BA;
     --form-background: #fbfbfb;
-    --color1: #03e9f4;
-    --color2: #ad44ef;
-    --color3: #1c99f6;
+    --color-neon: #03e9f4;
+    --color-purple: #ad44ef;
+    --color-blue: #1c99f6;
+    --color-green: #31aa52;
 }
 
 body {
@@ -56,7 +57,7 @@ body {
     margin-bottom: 30px;
     margin-top: 24px;
     border: none;
-    border-bottom: 1px solid var(--color1);
+    border-bottom: 1px solid var(--color-neon);
     outline: none;
     background: transparent;
 }
@@ -84,8 +85,91 @@ body {
     width: 100%;
     padding: 12px;
     font-size: 15px;
-    background-color: var(--color3);
+    background-color: var(--color-blue);
     color: white;
+}
+
+header {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.header-contents {
+    display: flex;
+}
+
+.header-contents > div {
+    display: flex;
+    width: 100%;
+}
+
+.header-contents-left {
+    justify-content: left;
+    font-weight: bold;
+    font-size: 30px;
+    align-items: center;
+}
+
+.header-contents-center {
+    justify-content: center;
+    font-size: 12px;
+    align-items: center;
+}
+
+.header-contents-right {
+    justify-content: right;
+    align-items: center;
+}
+
+.header-contents-right img {
+    height: 30px;
+    width: 30px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.menu-button {
+    cursor: pointer;
+}
+
+.menu-contents {
+    display: none;
+    position: absolute;
+    width: 24%;
+    z-index: 1;
+    border-radius: 6px;
+    background-color: var(--color-green);
+}
+
+.menu-contents a,
+.user-menu-contents a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.2em;
+}
+
+.menu-contents div,
+.user-menu-contents div {
+    padding: 12px;
+    border-top: 1px solid #FFFFFF;
+    border-radius: 6px;
+}
+
+.menu-contents div:hover,
+.user-menu-contents div:hover {
+    background: #FFFFFF;
+    color: var(--color-green);
+}
+
+.user-menu-contents {
+    position: absolute;
+    display: inline-block;
+    top:36;
+    right: 0;
+    margin-right: 30px;
+    width: 240px;
+    display: none;
+    background-color: var(--color-green);
 }
 
 .sys-msg {

@@ -24,6 +24,6 @@ if (isset($_POST['Password'])) {
         echo "Wrong Username or Password!";
         $log = "Unsuccessful login as ".$_POST['Username'];
     }
-    write_log_file ($log);
+    //write_log_file ($log);
 }
 ?>

@@ -73,7 +73,13 @@
                         type: "post",
                         data: $(this).serialize(),
                         success: function (e) {
-                            $(".sys-msg").html(e);
+                            if (e == 0) {
+                                location.href = "home.html"
+                            }
+                            else {
+                                $(".sys-msg").html(e);
+                                $(".sys-msg").addClass("error");
+                            }
                         }
                     });
                 }
