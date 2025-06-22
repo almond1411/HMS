@@ -25,8 +25,7 @@
 <!-- menu-contents -->
 <div class="menu-contents">
     <a href="home.html"><div>Home</div></a>
-    <a href="./change_my_password.html"><div>Change My Password</div></a>
-    <a href="./update_my_info.html"><div>Change My Info</div></a>
+    <a href="Users.html"><div>Users</div></a>
 </div>
 <!-- menu-contents ends -->
 <!-- user-menu-contents -->

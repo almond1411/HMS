@@ -130,6 +130,7 @@ header {
 
 .menu-button {
     cursor: pointer;
+    margin-left: 30px;
 }
 
 .menu-contents {
@@ -170,6 +171,30 @@ header {
     width: 240px;
     display: none;
     background-color: var(--color-green);
+}
+
+section {
+    margin-top: 12px;
+    padding: 12px;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.module-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.module-buttons > div {
+    margin: 12px;
+}
+
+.square-button {
+    width: 120px;
+    height: 120px;
+    font-size: 1.2em;
 }
 
 .sys-msg {
