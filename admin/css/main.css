@@ -173,6 +173,39 @@ header {
     background-color: var(--color-green);
 }
 
+.sub-menu {
+    padding-top: 6px;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}
+
+.sub-menu  a {
+    margin-left: 6px;
+    padding: 12px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    border: 1px solid #FFFFFF;
+    border-radius: 24px 6px 0px 0px;
+    box-shadow: 3px 6px #888888;
+    background-color: silver;
+}
+
+.sub-menu > a:active {
+    box-shadow: 0px 3px #888888;
+}
+
+.sub-menu div {
+    display: inline;
+    padding: 12px;
+}
+
+.current-tab {
+    background: var(--color-purple);
+    color: #ffffff;
+}
+
 section {
     margin-top: 12px;
     padding: 12px;
