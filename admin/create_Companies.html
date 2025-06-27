@@ -13,8 +13,83 @@
         <!-- wrapper -->
         <div class="wraper">
             <header></header>
+            <!-- sub-menu -->
+            <div class="sub-menu">
+                <a href="Companies.html">
+                    <div>Comapany List</div>
+                </a>
+                <a href="#" id="current-tab">
+                    <div>Create Companies</div>
+                </a>
+            </div>
+            <!-- sub-menu ends -->
             <!-- main-contents -->
             <div class="main-contents">
+                 <!-- form -->
+                <sectino class="form">
+                    <form id="myForm" action="#" method="post">
+                        <!-- data-form -->
+                        <div class="form-table">
+                            <table>
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Name: </td>
+                                        <td><input type="text" name="Name" id="Name"></td>
+                                        <td>Type: </td>
+                                        <td>
+                                            <select name="Type">
+                                                <option value="">Select One</option>
+                                                <option value="1">Tour Operator</option>
+                                                <option value="2">MICE Organizer</option>
+                                                <option value="3">Airline</option>
+                                                <option value="4">Travel Agency</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address Line 1: </td>
+                                        <td><input type="text" name="Address1" id="Address1"></td>
+                                        <td>Address Line 2: </td>
+                                        <td><input type="text" name="Address2" id="Address2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>City: </td>
+                                        <td><input type="text" name="City" id="City"></td>
+                                        <td>Email: </td>
+                                        <td><input type="text" name="Email" id="Email"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Website: </td>
+                                        <td><input type="text" name="Website" id="Website"></td>
+                                        <td>Contract: </td>
+                                        <td>
+                                            <select name="Class">
+                                                <option value="D">Class D</option>
+                                                <option value="C">Class C</option>
+                                                <option value="B">Class B</option>
+                                                <option value="A">Class A</option>              
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <th colspan="2">
+                                            
+                                        </th>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="form-button">
+                                <button type="submit" style="width: 240px;" class="wide-button">Submit</button>
+                            </div>
+                        </div>
+                        <!-- data-form ends -->
+                    </form>
+                    <div class="sys-msg"></div>
+                </section>
+                <!-- form ends -->
             </div>
             <!-- main-contents ends -->
         </div>
@@ -24,6 +99,26 @@
     <script src="./js/scripts.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            checkSession ();
+            getHeader ("Create Company");
+
+            $("#myForm").on("submit", function () {
+                event.preventDefault();
+                let error = false;
+                let Name  = $("#Name");
+                let City = $("#City");
+                if (Name.val().trim() == "" || Name.val().trim() == null) {
+                    error = true;
+                    Name.addClass("input-error");
+                    displayError("Name cannot be blank!");
+                }
+
+                if (City.val().trim() == "" || City.val().trim() == null) {
+                    error = true;
+                    City.addClass("input-error");
+                    displayError("City cannot be blank!");
+                }
+            });
         });
     </script>
 </html>

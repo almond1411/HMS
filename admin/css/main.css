@@ -180,7 +180,7 @@ header {
     justify-content: center;
 }
 
-.sub-menu  a {
+.sub-menu a {
     margin-left: 6px;
     padding: 12px;
     text-decoration: none;
@@ -201,7 +201,7 @@ header {
     padding: 12px;
 }
 
-.current-tab {
+#current-tab {
     background: var(--color-purple);
     color: #ffffff;
 }
@@ -224,6 +224,23 @@ section {
     margin: 12px;
 }
 
+.data-form {
+    padding-top: 24px;
+}
+
+.form-table > table {
+    margin: 12px auto;
+}
+
+.form-table > table > tbody > tr > td {
+    padding: 6px 3px;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+}
+
 .square-button {
     width: 120px;
     height: 120px;
@@ -233,6 +250,10 @@ section {
 .sys-msg {
     padding: 12px;
     text-align: center;
+}
+
+.input-error {
+    background-color: red;
 }
 
 .error {
