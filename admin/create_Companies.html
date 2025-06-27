@@ -118,6 +118,17 @@
                     City.addClass("input-error");
                     displayError("City cannot be blank!");
                 }
+
+                if (error == false) {
+                    $.ajax({
+                        url: "./php/insert_Companies.php",
+                        type: "post",
+                        data: $(this).serialize(),
+                        success: function () {
+                            
+                        }
+                    });
+                }
             });
         });
     </script>
