@@ -124,8 +124,13 @@
                         url: "./php/insert_Companies.php",
                         type: "post",
                         data: $(this).serialize(),
-                        success: function () {
-                            
+                        success: function (err) {
+                            if (err == 0){
+                                location.href = "Companies.html";
+                            }
+                            else {
+                                $(".sys-msg").html(err);                                   
+                            }
                         }
                     });
                 }

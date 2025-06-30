@@ -21,6 +21,7 @@
             <!-- sub-menu ends -->
             <!-- main-contents -->
             <div class="main-contents">
+                <section class="data-table"></section>
             </div>
             <!-- main-contents ends -->
         </div>
@@ -32,6 +33,10 @@
         $(document).ready(function () {
             checkSession ();
             getHeader ("Companies");
+            //getting data from the file select_Companies.php
+            $.post("./php/select_Companies.php", function (data) {
+                $(".data-table").html(data);
+            });
         });
     </script>
 </html>
