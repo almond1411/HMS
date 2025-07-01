@@ -2,6 +2,11 @@
 session_start();
 require_once "handler.php";
 require_once "functions.php";
+//selecting data from the table Companies
+$db = new database();
+$stm = "SELECT * FROM Companies ORDER BY Id DESC; ";
+$db->prepare($stm);
+$rows_Companies = $db->Resultset();
 ?>
 <table>
     <thead>
@@ -16,6 +21,11 @@ require_once "functions.php";
         </tr>
     </thead>
     <tbody>
-        
+    <?php foreach ($rows_Companies as $row_Companies): ?>
+        <tr>
+            <td><?php echo $row_Companies->Id; ?></td>
+            <td><?php echo $row_Companies->Name; ?></td>
+        </tr>
+    <?php endforeach; ?>    
     </tbody>
 </table>
