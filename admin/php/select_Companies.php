@@ -18,7 +18,6 @@ $rows_Companies = $db->Resultset();
             <th>Website</th>
             <th>Type</th>
             <th>Class</th>
-            <th>######</th>
         </tr>
     </thead>
     <tbody>
@@ -26,34 +25,6 @@ $rows_Companies = $db->Resultset();
         <tr>
             <td><?php echo $row_Companies->Id; ?></td>
             <td><?php echo $row_Companies->Name; ?></td>
-            <td><?php echo $row_Companies->City; ?></td>
-            <td>
-                <?php if (isset($row_Companies->Email)): ?>
-                    <a href="<?php echo $row_Companies->Email; ?>"><?php echo $row_Companies->Email; ?></a>
-                <?php endif; ?>
-            </td>
-            <td>
-                <?php if (isset($row_Companies->Website)): ?>
-                    <a href="<?php echo $row_Companies->Website; ?>"><?php echo $row_Companies->Website; ?></a>
-                <?php endif; ?>
-            </td>
-            <td class="centered">
-                <?php
-                //getting data from the table Company_Types
-                $getTypes = "SELECT * FROM Company_Types WHERE Id = :Id ;";
-                $db->prepare($getTypes);
-                $db->Bind(":Id", $row_Companies->Type);
-                $rows_Types = $db->Resultset();
-                foreach ($rows_Types as $row_Types) {
-                    echo $row_Types->Type;
-                }
-                ?>
-            </td>
-            <td class="centered">
-                <?php echo $row_Companies->Class; ?>
-            </td>
-            <td>
-            </td>
         </tr>
     <?php endforeach; ?>    
     </tbody>
