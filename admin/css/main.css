@@ -245,6 +245,7 @@ section {
     margin: 6px auto;
     border: 3px solid var(--color-purple);
     border-radius: 12px;
+    border-collapse: collapse;
 }
 
 .data-table table thead tr th,
@@ -253,11 +254,11 @@ section {
 }
 
 .data-table table tbody tr:nth-of-type(odd){
-    background-color: silver;
+    background-color: white;
 }
 
 .data-table table tbody tr:nth-of-type(even){
-    background-color: white;
+    background-color: var(--background);
 }
 
 .square-button {
@@ -267,8 +268,8 @@ section {
 }
 
 .small-button {
-    padding: 6px 12px;
     width: 60px;
+    height: 36px;
 }
 
 .sys-msg {
