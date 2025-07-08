@@ -241,11 +241,11 @@ section {
     justify-content: center;
 }
 
+
 .data-table table {
     margin: 6px auto;
-    border: 3px solid var(--color-purple);
-    border-radius: 12px;
     border-collapse: collapse;
+    border: 3px groove var(--color-purple);
 }
 
 .data-table table thead tr th,

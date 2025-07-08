@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="./css/main.css">
+        <!-- <link rel="shortcut icon" href="./images/logo.jpg"> -->
+        <title>Title</title>
+    </head>
+    <body>
+        <!-- wrapper -->
+        <div class="wraper">
+            <header></header>
+            <!-- sub-menu -->
+            <div class="sub-menu">
+                <a href="Companies.html"><div>Company List</div></a>
+                <a href="#" id="current-tab"></a>
+            </div>
+            <!-- subm-menu ends -->
+            <!-- main-contents -->
+            <div class="main-contents">
+                <section class="form"></section>
+            </div>
+            <!-- main-contents ends -->
+        </div>
+        <!-- wrapper ends  -->
+    </body>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            checkSession ();
+            // getting data from the link
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const CompaniesLink = urlParams.get("CompaniesLink");
+            
+            //getting Name form the table Companies
+            $.post("./php/select_one_data.php", {table:'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data) {
+                getHeader(data);
+                $("#current-tab").html("<div>Edit: "+data+"</div>");
+            });
+
+            //getting the form from the file ./php/edit_Companies.php
+            $.post("./php/edit_Companies.php", {CompaniesLink: CompaniesLink}, function (data) {
+                $(".form").html(data);
+            });
+        });
+    </script>
+</html>

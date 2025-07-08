@@ -43,9 +43,9 @@ $rows_Companies = $db->Resultset();
             </td>
             <td><?php echo $row_Companies->Class; ?></td>
             <td>
-                <a href="view_Company.html?Companies_Link="><button type="button" class="small-button">View</button></a>
-		&nbsp;
-		<a href="edit_Company.html?Comapnies_Link="><button type="button" class="small-button">Edit</button></a>
+                <a href="view_Companies.html?CompaniesLink=<?php echo $row_Companies->Link; ?>"><button type="button" class="small-button">View</button></a>
+		        &nbsp;
+                <a href="edit_Companies.html?CompaniesLink=<?php echo $row_Companies->Link; ?>"><button type="button" class="small-button">Edit</button></a>
             </td>
         </tr>
     <?php endforeach; ?>    
