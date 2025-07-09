@@ -241,6 +241,9 @@ section {
     justify-content: center;
 }
 
+.data-table h3 {
+    text-align: center;
+}
 
 .data-table table {
     margin: 6px auto;

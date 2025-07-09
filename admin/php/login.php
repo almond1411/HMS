@@ -6,7 +6,7 @@ require_once "functions.php";
 //checking if password is empty
 if (isset($_POST['Password'])) {
     $db = new database();
-    $db->Prepare("SELECT * FROM Users WHERE BINARY Username = :Username AND BINARY Password = :Password");
+    $db->Prepare("SELECT * FROM Admins WHERE BINARY Username = :Username AND BINARY Password = :Password");
     $db->Bind(":Username", trim($_POST['Username']));
     $Password = hash('sha3-512', trim($_POST['Password']));
     $db->Bind(":Password", trim($Password));

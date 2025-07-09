@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2025 at 03:01 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jul 09, 2025 at 04:31 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Database: `Hotel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Admins`
+--
+
+CREATE TABLE `Admins` (
+  `Id` int(12) NOT NULL,
+  `Username` char(30) NOT NULL,
+  `Password` varchar(240) NOT NULL,
+  `Title` char(6) NOT NULL,
+  `Name` char(30) NOT NULL,
+  `Position` char(60) NOT NULL,
+  `Department` char(30) NOT NULL,
+  `Email` char(60) NOT NULL,
+  `Phone` char(60) NOT NULL,
+  `Status` int(1) NOT NULL,
+  `Access` int(2) NOT NULL,
+  `Link` varchar(240) NOT NULL,
+  `Created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Updated` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `Remark` varchar(240) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Admins`
+--
+
+INSERT INTO `Admins` (`Id`, `Username`, `Password`, `Title`, `Name`, `Position`, `Department`, `Email`, `Phone`, `Status`, `Access`, `Link`, `Created`, `Updated`, `Remark`) VALUES
+(1, 'denlahpai', '0d5e846c16cc3807b4756c2df91dce6a713655417c7ea7b733d1e4c2d16a4dcccff4f10d0abc64d92d2192500289951313cbf1c9089353de95a3fe0aca918d71', 'Mr.', 'Den Lahpai', 'Managing Director', 'Management', 'den.lahpai@gmail.com', '09402590317', 1, 1, 'Usr_68544d5b360981.40343588', '2025-06-19 17:45:44', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -96,33 +127,27 @@ CREATE TABLE `Room_Types` (
 --
 
 CREATE TABLE `Users` (
-  `Id` int(12) NOT NULL,
-  `Username` char(30) NOT NULL,
+  `Id` int(6) NOT NULL,
+  `Email` char(60) NOT NULL,
   `Password` varchar(240) NOT NULL,
   `Title` char(6) NOT NULL,
   `Name` char(30) NOT NULL,
-  `Position` char(60) NOT NULL,
-  `Department` char(30) NOT NULL,
-  `Email` char(60) NOT NULL,
-  `Phone` char(60) NOT NULL,
+  `Position` char(30) NOT NULL,
+  `CompaniesLink` varchar(240) NOT NULL,
   `Status` int(1) NOT NULL,
-  `Access` int(2) NOT NULL,
-  `Link` varchar(240) NOT NULL,
   `Created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `Updated` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `Remark` varchar(240) NOT NULL
+  `Updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Users`
---
-
-INSERT INTO `Users` (`Id`, `Username`, `Password`, `Title`, `Name`, `Position`, `Department`, `Email`, `Phone`, `Status`, `Access`, `Link`, `Created`, `Updated`, `Remark`) VALUES
-(1, 'denlahpai', '0d5e846c16cc3807b4756c2df91dce6a713655417c7ea7b733d1e4c2d16a4dcccff4f10d0abc64d92d2192500289951313cbf1c9089353de95a3fe0aca918d71', 'Mr.', 'Den Lahpai', 'Managing Director', 'Management', 'den.lahpai@gmail.com', '09402590317', 1, 1, 'Usr_68544d5b360981.40343588', '2025-06-19 17:45:44', NULL, '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `Admins`
+--
+ALTER TABLE `Admins`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `Companies`
@@ -147,6 +172,12 @@ ALTER TABLE `Users`
 --
 
 --
+-- AUTO_INCREMENT for table `Admins`
+--
+ALTER TABLE `Admins`
+  MODIFY `Id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `Companies`
 --
 ALTER TABLE `Companies`
@@ -162,7 +193,7 @@ ALTER TABLE `Company_Types`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `Id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(6) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

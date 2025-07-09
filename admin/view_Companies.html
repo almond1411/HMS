@@ -7,7 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="stylesheet" href="./css/main.css">
         <!-- <link rel="shortcut icon" href="./images/logo.jpg"> -->
-        <title>Title</title>
+        <title></title>
     </head>
     <body>
         <!-- wrapper -->
@@ -21,7 +21,9 @@
             <!-- subm-menu ends -->
             <!-- main-contents -->
             <div class="main-contents">
-                <section class="form"></section>
+                <section class="data-table users-table">
+                    <h3>Users</h3>
+                </section>
             </div>
             <!-- main-contents ends -->
         </div>
@@ -40,13 +42,8 @@
             //getting Name form the table Companies
             $.post("./php/select_one_data.php", {table:'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data) {
                 getHeader(data);
-                $("title").html("Edit: "+data);
-                $("#current-tab").html("<div>Edit: "+data+"</div>");
-            });
-
-            //getting the form from the file ./php/edit_Companies.php
-            $.post("./php/edit_Companies.php", {CompaniesLink: CompaniesLink}, function (data) {
-                $(".form").html(data);
+                $("title").html(data);
+                $("#current-tab").html("<div>"+data+"</div>");
             });
         });
     </script>
