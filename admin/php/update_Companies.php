@@ -18,7 +18,7 @@ if (isset($_POST['Name'])) {
         echo "Duplicate entry!";
     }
     else {
-
+        //updating the table Companies
         $update_Companies = "UPDATE Companies SET 
             Name = :Name,
             Type = :Type,
@@ -39,6 +39,13 @@ if (isset($_POST['Name'])) {
         $db->Bind(":Website", trim($_POST['Website']));
         $db->Bind(":Class", $_POST['Class']);
         $db->Bind(":Link", $_POST['Link']);
+        if ($db->execute()) {
+            //zero is returned for no error
+            echo 0; 
+        }
+        else {
+            echo $connection_error;
+        }
     }
 }
 else {
