@@ -21,7 +21,10 @@ foreach ($rows_Companies as $row_Companies) {
             <tbody>
                 <tr>
                     <td>Name: </td>
-                    <td><input type="text" name="Name" id="Name" value="<?php echo $row_Companies->Name; ?>"></td>
+                    <td>
+                        <input type="text" name="Name" id="Name" value="<?php echo $row_Companies->Name; ?>">
+                        <input type="hidden" name="Link" id="Link" value="<?php echo $row_Companies->Link; ?>">
+                    </td>
                     <td>Type: </td>
                     <td>
                         <select name="Type">
@@ -113,7 +116,26 @@ foreach ($rows_Companies as $row_Companies) {
         let City = $("#City");
 
         if (Name.val().trim() == "" || Name.val().trim() == null) {
+            error = true;
+            Name.addClass("input-error");
+            displayError("Name cannot be blank!");
+        }
 
+        if (City.val().trim() == "" || City.val().trim() == null) {
+            error = true;
+            City.addClass("input-error");
+            displayError("City cannot be blank!");
+        }
+
+        if (error == false) {
+            $.ajax({
+                url: "./php/update_Companies.php", 
+                type: "post",
+                data: $(this).serialize(),
+                success: function (err) {
+                    $(".sys-msg").html(err);
+                }
+            });
         }
     });
 </script>
