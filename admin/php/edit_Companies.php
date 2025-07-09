@@ -108,6 +108,12 @@ foreach ($rows_Companies as $row_Companies) {
 <script type="text/javascript">
     $("#myForm").on("submit", function (){
         event.preventDefault();
-        alert('hi');
+        let error = false;
+        let Name = $("#Name");
+        let City = $("#City");
+
+        if (Name.val().trim() == "" || Name.val().trim() == null) {
+
+        }
     });
 </script>
