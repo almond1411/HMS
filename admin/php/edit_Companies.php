@@ -133,8 +133,13 @@ foreach ($rows_Companies as $row_Companies) {
                 type: "post",
                 data: $(this).serialize(),
                 success: function (err) {
-                    $(".sys-msg").html(err);
-                }
+                    if (err == 0) {
+                        window.location.href = 'Companies.html';
+                    }
+                    else {
+                        $(".sys-msg").html(err);
+                    }
+                }   
             });
         }
     });
