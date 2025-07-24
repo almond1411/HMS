@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 09, 2025 at 04:31 PM
+-- Generation Time: Jul 12, 2025 at 04:45 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,7 +50,7 @@ CREATE TABLE `Admins` (
 --
 
 INSERT INTO `Admins` (`Id`, `Username`, `Password`, `Title`, `Name`, `Position`, `Department`, `Email`, `Phone`, `Status`, `Access`, `Link`, `Created`, `Updated`, `Remark`) VALUES
-(1, 'denlahpai', '0d5e846c16cc3807b4756c2df91dce6a713655417c7ea7b733d1e4c2d16a4dcccff4f10d0abc64d92d2192500289951313cbf1c9089353de95a3fe0aca918d71', 'Mr.', 'Den Lahpai', 'Managing Director', 'Management', 'den.lahpai@gmail.com', '09402590317', 1, 1, 'Usr_68544d5b360981.40343588', '2025-06-19 17:45:44', NULL, '');
+(1, 'denlahpai', '0d5e846c16cc3807b4756c2df91dce6a713655417c7ea7b733d1e4c2d16a4dcccff4f10d0abc64d92d2192500289951313cbf1c9089353de95a3fe0aca918d71', 'Mr.', 'Den Lahpai', 'Managing Director', 'Management', 'den.lahpai@gmail.com', '09402590317', 1, 1, 'Usr_68544d5b360981.40343588', '2025-06-19 17:45:44', '2025-07-12 03:12:30', '');
 
 -- --------------------------------------------------------
 
