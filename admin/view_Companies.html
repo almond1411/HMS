@@ -45,6 +45,11 @@
                 $("title").html(data);
                 $("#current-tab").html("<div>"+data+"</div>");
             });
+
+            //gettgin data from the table Users
+            $.post("./php/select_Company_Users.php", {CompaniesLink: CompaniesLink}, function (data) {
+                $(".users-table").append(data);
+            });
         });
     </script>
 </html>
