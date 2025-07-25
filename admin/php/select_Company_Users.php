@@ -24,7 +24,7 @@ if (isset($_POST['CompaniesLink'])) {
             <th>Status</th>
             <th>Access</th>
             <th>Created On</th>
-            <th>Remark</th>
+            <th>######</th>
         </tr>
     </thead>
     <tbody>
@@ -37,8 +37,23 @@ if (isset($_POST['CompaniesLink'])) {
             <td><?php echo $row_Users->Department; ?></td>
             <td><a href="mailto:<?php echo $row_Users->Email; ?>"><?php echo $row_Users->Email; ?></a></td>
             <td><?php echo $row_Users->Phone; ?></td>
+            <td>
+            <?php 
+            if ($row_Users->Status == 1) {
+                echo "Active";
+            }
+            else {
+                echo "Inactive";
+            }
+            ?>    
+            </td>
+            <td><?php echo $row_Users->Access; ?></td>
+            <td><?php echo strtotime('d-M-y', $row_Users->Created); ?></td>
         </tr>
         <?php endforeach; ?>
+        <tr>
+            <th colspan=""></th>
+        </tr>
     </tbody>
 </table>
-<?php //endforeach; ?>
+
