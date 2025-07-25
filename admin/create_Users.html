@@ -16,7 +16,6 @@
             <!-- sub-menu -->
             <div class="sub-menu">
                 <a href="Companies.html"><div>Company List</div></a>
-                <a href="#" id="current-tab"></a>
             </div>
             <!-- subm-menu ends -->
             <!-- main-contents -->
@@ -39,23 +38,15 @@
             const urlParams = new URLSearchParams(queryString);
             const CompaniesLink = urlParams.get("CompaniesLink");
             
-            // creating Create User tab
-            const tab1 = "<a href='create_Users.html?CompaniesLink="+CompaniesLink+"'><div>Create User</div></a>";
-            $(".sub-menu").append(tab1);
-
-            const tab2 = "<a href='new_Deposits.html?CompaniesLink="+CompaniesLink+"'><div>New Deposit</div></a>";
-            $(".sub-menu").append(tab2);
-
-            //getting Name form the table Companies
-            $.post("./php/select_one_data.php", {table:'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data) {
+            //creating Compnay name tab
+            $.post("./php/select_one_data.php", {table: 'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data){
                 getHeader(data);
                 $("title").html(data);
-                $("#current-tab").html("<div>"+data+"</div>");
-            });
-
-            //gettgin data from the table Users
-            $.post("./php/select_Company_Users.php", {CompaniesLink: CompaniesLink}, function (data) {
-                $(".users-table").append(data);
+                const tab1 = "<a href='view_Companies.html?CompaniesLink="+CompaniesLink+"'><div>"+data+"</div></a>";
+                $(".sub-menu").append(tab1);
+                
+                const tab2 = "<a href='create_Users.html?CompaniesLink="+CompaniesLink+"' id='current-tab'><div>Create User</div></a>";
+                $(".sub-menu").append(tab2);
             });
         });
     </script>
