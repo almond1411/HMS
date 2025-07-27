@@ -14,15 +14,11 @@ if (isset($_POST['CompaniesLink'])) {
 <table>
     <thead>
         <tr>
-            <th>Username</th>
+            <th>Email</th>
             <th>Title</th>
             <th>Name</th>
             <th>Position</th>
-            <th>Department</th>
-            <th>Email</th>
-            <th>Phone</th>
             <th>Status</th>
-            <th>Access</th>
             <th>Created On</th>
             <th>######</th>
         </tr>
@@ -30,13 +26,10 @@ if (isset($_POST['CompaniesLink'])) {
     <tbody>
         <?php foreach ($rows_Users as $row_Users): ?>
         <tr>
-            <td><?php echo $row_Users->Username; ?></td>
+            <td><?php echo $row_Users->Email; ?></td>
             <td><?php echo $row_Users->Title; ?></td>
             <td><?php echo $row_Users->Name; ?></td>
             <td><?php echo $row_Users->Position; ?></td>
-            <td><?php echo $row_Users->Department; ?></td>
-            <td><a href="mailto:<?php echo $row_Users->Email; ?>"><?php echo $row_Users->Email; ?></a></td>
-            <td><?php echo $row_Users->Phone; ?></td>
             <td>
             <?php 
             if ($row_Users->Status == 1) {
@@ -47,8 +40,10 @@ if (isset($_POST['CompaniesLink'])) {
             }
             ?>    
             </td>
-            <td><?php echo $row_Users->Access; ?></td>
-            <td><?php echo strtotime('d-M-y', $row_Users->Created); ?></td>
+            <td><?php echo date('d-M-y', strtotime($row_Users->Created)); ?></td>
+            <td>
+                <a href="edit_Users.html?UsersLink=<?php echo $row_Users->Link ?>&CompaniesLink=<?php echo $_POST['CompaniesLink']; ?>"><button type="button" class="small-button">Edit</button></a>
+            </td>
         </tr>
         <?php endforeach; ?>
         <tr>

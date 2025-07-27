@@ -42,6 +42,9 @@ if (isset($_POST['Name'])) {
         else {
             echo $connection_error;
         }
+    }
+    else {
+        echo "Duplicate entry!";
     } 
 }
 else {

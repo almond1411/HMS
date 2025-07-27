@@ -20,8 +20,41 @@
             <!-- subm-menu ends -->
             <!-- main-contents -->
             <div class="main-contents">
-                <section class="data-table users-table">
-                    <h3>Users</h3>
+                <section class="form">
+                    <form id="myForm" action="#" method="post">
+                        <!-- form-table -->
+                        <div class="form-table">
+                            <table>
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Title: </td>
+                                        <td>
+                                            <select name="Title" id="Title">
+                                                <option value="Mr">Mr.</option>
+                                                <option value="Ms">Ms.</option>
+                                                <option value="Mrs">Mrs.</option>
+                                            </select>
+                                            <input type="hidden" name="CompaniesLink" id="CompaniesLink">
+                                        </td>
+                                        <td>Name: </td>
+                                        <td><input type="text" name="Name" id="Name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email: </td>
+                                        <td><input type="text" name="Email" id="Email"></td>
+                                        <td>Position: </td>
+                                        <td><input type="text" name="Position" id="Positon"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="form-button">
+                                <button type="submit" style="width: 240px;" class="wide-button">Submit</button>
+                            </div> 
+                        </div>
+                        <!-- form-table ends -->
+                    </form>
+                    <div class="sys-msg"></div>
                 </section>
             </div>
             <!-- main-contents ends -->
@@ -36,18 +69,55 @@
             // getting data from the link
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            const CompaniesLink = urlParams.get("CompaniesLink");
+            var CompaniesLink = urlParams.get("CompaniesLink");
+
+            $("#CompaniesLink").val(CompaniesLink);
             
             //creating Compnay name tab
             $.post("./php/select_one_data.php", {table: 'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data){
-                getHeader(data);
-                $("title").html(data);
+                getHeader(data+": Create User");
+                $("title").html(data+" - Create User");
                 const tab1 = "<a href='view_Companies.html?CompaniesLink="+CompaniesLink+"'><div>"+data+"</div></a>";
                 $(".sub-menu").append(tab1);
                 
                 const tab2 = "<a href='create_Users.html?CompaniesLink="+CompaniesLink+"' id='current-tab'><div>Create User</div></a>";
                 $(".sub-menu").append(tab2);
             });
+        });
+        
+        $("#myForm").on("submit", function () {
+            event.preventDefault();
+            let error = false;
+            let Name = $("#Name");
+            let Email = $("#Email");
+
+            if (Name.val().trim() == "" || Name.val().trim() == null) {
+                error = true;
+                Name.addClass("input-error");
+                displayError("Name cannot be blank!");
+            }
+            
+            if (Email.val().trim() == "" || Email.val().trim() == null) {
+                error = true;
+                Email.addClass("input-error");
+                displayError("Email cannot be blank!");
+            }
+
+            if (error == false) {
+                $.ajax({
+                    url: "./php/insert_Users.php",
+                    type: "post",
+                    data: $(this).serialize(),
+                    success: function (err) {
+                        if (err == 0) {
+                            history.go(-1);
+                        }
+                        else {
+                            displayError(err);
+                        }
+                    }
+                });
+            }
         });
     </script>
 </html>

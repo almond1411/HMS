@@ -25,3 +25,4 @@ function getHeader (location) {
 function Toggle(item) {
     $(item).slideToggle();
 }
+

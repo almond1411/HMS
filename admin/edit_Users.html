@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="./css/main.css">
+        <!-- <link rel="shortcut icon" href="./images/logo.jpg"> -->
+        <title></title>
+    </head>
+    <body>
+        <!-- wrapper -->
+        <div class="wraper">
+            <header></header>
+            <!-- sub-menu -->
+            <div class="sub-menu">
+                <a href="Companies.html"><div>Company List</div></a>
+            </div>
+            <!-- subm-menu ends -->
+            <!-- main-contents -->
+            <div class="main-contents">
+                <section class="form"></section>
+            </div>
+            <!-- main-contents ends -->
+        </div>
+        <!-- wrapper ends  -->
+    </body>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            checkSession ();
+            // getting UsersLink data from the url
+            let queryString = window.location.search;
+            let urlParams = new URLSearchParams(queryString);
+            let UsersLink = urlParams.get("UsersLink");
+            
+            // gettgin CompaniesLink data from the url
+            let queryString2 = window.location.search;
+            let urlParams2 = new URLSearchParams(queryString2);
+            let CompaniesLink = urlParams2.get("CompaniesLink");
+
+            $.post("./php/select_one_data.php", {table: 'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data) {
+                $(".sub-menu").append("<a href='view_Companies.html?CompaniesLink="+CompaniesLink+"'><div>"+data+"</div></a>");
+            });
+
+            $.post("./php/select_one_data.php", {table: 'Users', column: 'Name', by_using: 'Link', target: UsersLink}, function (data){
+                $(".sub-menu").append("<a href='' id='current-tab'><div>"+data+"</div></a>");
+                getHeader("Edit:"+data);
+            });
+
+            //getting the edit Users form
+            $.post("./php/edit_Users.php", {UsersLink: UsersLink, CompaniesLink: CompaniesLink}, function (data) {
+                $(".form").html(data);
+            });
+
+        });
+    </script>
+</html>
