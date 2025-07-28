@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="./css/main.css">
+        <!-- <link rel="shortcut icon" href="./images/logo.jpg"> -->
+        <title></title>
+    </head>
+    <body>
+        <!-- wrapper -->
+        <div class="wraper">
+            <header></header>
+            <!-- sub-menu -->
+            <div class="sub-menu">
+                <a href="Companies.html"><div>Company List</div></a>
+            </div>
+            <!-- subm-menu ends -->
+            <!-- main-contents -->
+            <div class="main-contents">
+                <section class="form">
+                    <form id="myForm" action="#" method="post" enctype="multipart/form-data">
+                        <!-- form-table -->
+                        <div class="form-table">
+                            <table>
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Amount: </td>
+                                        <td><input type="number" id="Amount" name="Amount"></td>
+                                        <td>Method: </td>
+                                        <td><input type="text" id="Method" name="Method"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>File: </td>
+                                        <td><input type="file" id="File" name="File"></td>
+                                        <td>Date: </td>
+                                        <td><input type="date" id="Deposit_date" name="Deposit_date"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="form-button">
+                                <button type="submit" style="width: 240px;" class="wide-button">Submit</button>
+                            </div> 
+                        </div>
+                        <!-- form-table ends -->
+                    </form>
+                    <div class="sys-msg"></div>
+                </section>
+            </div>
+            <!-- main-contents ends -->
+        </div>
+        <!-- wrapper ends  -->
+    </body>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            checkSession ();
+            // getting data from the link
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            var CompaniesLink = urlParams.get("CompaniesLink");
+
+            $("#CompaniesLink").val(CompaniesLink);
+            
+            //creating Compnay name tab
+            $.post("./php/select_one_data.php", {table: 'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data){
+                getHeader(data+": New Deposit");
+                $("title").html(data+" - New Deposit");
+                const tab1 = "<a href='view_Companies.html?CompaniesLink="+CompaniesLink+"'><div>"+data+"</div></a>";
+                $(".sub-menu").append(tab1);
+                
+                const tab2 = "<a href='new_Deposits.html?CompaniesLink="+CompaniesLink+"' id='current-tab'><div>New Deposit</div></a>";
+                $(".sub-menu").append(tab2);
+            });
+        });
+        
+        $("#myForm").on("submit", function () {
+            event.preventDefault();
+            let error = false;
+            let Amount = $("#Amount);
+            let Method = $("#Method);
+            let Deposit_date = $("#Deposit_date");
+        });
+    </script>
+</html>

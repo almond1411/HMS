@@ -43,6 +43,7 @@ if (isset($_POST['UsersLink'])) {
 						?>
 						</select>
 						<input type="hidden" id="UsersLink" name="UsersLink" value="<?php echo $_POST['UsersLink']; ?>">
+                        <input type="hidden" id="CompaniesLink" name="CompaniesLink" value="<?php echo $_POST['CompaniesLink']; ?>">
 					</td>
 					<td>Name: </td>
 					<td><input type="text" name="Name" id="Name" value="<?php echo $row_Users->Name; ?>"></td>
@@ -89,6 +90,7 @@ if (isset($_POST['UsersLink'])) {
 		var error = false;
 		let Name = $("#Name");
 		let Email = $("#Email");
+        let CompaniesLink = $("#CompaniesLink").val();
 
 		if (Name.val().trim() == "" || Name.val().trim() == null) {
 			error = true;
@@ -109,8 +111,8 @@ if (isset($_POST['UsersLink'])) {
 				data: $(this).serialize(),
 				success: function (err) {
 					if (err == 0) {
-						history.go(-1);
-					}
+					    location.href = "view_Companies.html?CompaniesLink="+CompaniesLink;
+                    }
 					else {
 						displayError(err);
 					}
