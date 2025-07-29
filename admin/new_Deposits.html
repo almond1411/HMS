@@ -104,10 +104,14 @@
             }
 
             if (error == false) {
+                
                 $.ajax({
                     url: "./php/new_Deposits.php",
                     type: "post",
-                    data: $(this).serialize(),
+                    data: new FormData(this),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     success: function (err) {
                         $(".sys-msg").html(err);
                     }
