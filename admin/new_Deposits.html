@@ -65,7 +65,7 @@
             var CompaniesLink = urlParams.get("CompaniesLink");
 
             $("#CompaniesLink").val(CompaniesLink);
-            
+                        
             //creating Compnay name tab
             $.post("./php/select_one_data.php", {table: 'Companies', column: 'Name', by_using: 'Link', target: CompaniesLink}, function (data){
                 getHeader(data+": New Deposit");
@@ -81,9 +81,38 @@
         $("#myForm").on("submit", function () {
             event.preventDefault();
             let error = false;
-            let Amount = $("#Amount);
-            let Method = $("#Method);
+            let Amount = $("#Amount");
+            let Method = $("#Method");
             let Deposit_date = $("#Deposit_date");
+
+            if (Amount.val() == 0 || Amount.val() == "" || Amount.val() == null) {
+                error = true;
+                Amount.addClass("input-error");
+                $(".sys-msg").html("The amount cannot be blank or 0!");
+            }
+
+            if (Method.val().trim() == "" || Method.val().trim() == null) {
+                error = true;
+                Method.addClass("input-error");
+                $(".sys-msg").html("Please fill out all the field(s) in red!");
+            }
+
+            if (Deposit_date.val() == "" || Deposit_date.val() == null) {
+                error = true;
+                Deposit_date.addClass("input-error");
+                $(".sys-msg").html("Please fill out the date of deposit!");
+            }
+
+            if (error == false) {
+                $.ajax({
+                    url: "./php/new_Deposits.php",
+                    type: "post",
+                    data: $(this).serialize(),
+                    success: function (err) {
+                        $(".sys-msg").html(err);
+                    }
+                });
+            }
         });
     </script>
 </html>
