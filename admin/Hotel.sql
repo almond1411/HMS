@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 28, 2025 at 04:56 PM
+-- Generation Time: Jul 29, 2025 at 07:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -115,7 +115,9 @@ CREATE TABLE `Deposits` (
   `Link` varchar(240) NOT NULL,
   `Amount` int(12) NOT NULL,
   `Method` char(60) NOT NULL,
-  `File` int(11) NOT NULL,
+  `File` varchar(240) NOT NULL,
+  `Deposit_date` date NOT NULL,
+  `Status` int(1) NOT NULL DEFAULT 1,
   `CompaniesLink` varchar(240) NOT NULL,
   `UsersLink` varchar(240) NOT NULL,
   `Created` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -158,14 +160,6 @@ CREATE TABLE `Users` (
   `Created` timestamp NOT NULL DEFAULT current_timestamp(),
   `Updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Users`
---
-
-INSERT INTO `Users` (`Id`, `Link`, `Email`, `Password`, `Title`, `Name`, `Position`, `CompaniesLink`, `Status`, `Access`, `Created`, `Updated`) VALUES
-(1, 'Usr_6884e4ce1f8797.37954958', 'denn.lahpai@gmail.com', '840d43278af24ac4d68dd2929228ec27f11c45ff8d07606abfadfcd2bdfc363494f5aab7b8cfbd567feabcae12a2cc8d5248c443054fdcd755e9e4b5325e13ca', 'Mr', 'Denis', 'Managing Director', 'Com_68623473336ad0.10032060', 1, 1, '2025-07-26 14:23:10', '2025-07-28 14:38:52'),
-(2, 'Usr_6884e9414dce86.72647834', 'den.lahpai@gmail.com', '840d43278af24ac4d68dd2929228ec27f11c45ff8d07606abfadfcd2bdfc363494f5aab7b8cfbd567feabcae12a2cc8d5248c443054fdcd755e9e4b5325e13ca', 'Mr', 'Denny', 'Tester', 'Com_68623473336ad0.10032060', 1, 1, '2025-07-26 14:42:09', '2025-07-27 11:47:42');
 
 --
 -- Indexes for dumped tables
@@ -233,7 +227,7 @@ ALTER TABLE `Deposits`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `Id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(6) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
