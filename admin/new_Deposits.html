@@ -29,7 +29,10 @@
                                 <tbody>
                                     <tr>
                                         <td>Amount: </td>
-                                        <td><input type="number" id="Amount" name="Amount"></td>
+                                        <td>
+                                            <input type="number" id="Amount" name="Amount">
+                                            <input type="hidden" id="CompaniesLink" name="CompaniesLink">
+                                        </td>
                                         <td>Method: </td>
                                         <td><input type="text" id="Method" name="Method"></td>
                                     </tr>
@@ -84,6 +87,7 @@
             let Amount = $("#Amount");
             let Method = $("#Method");
             let Deposit_date = $("#Deposit_date");
+            let CompaniesLink = $("#CompaniesLink").val();
 
             if (Amount.val() == 0 || Amount.val() == "" || Amount.val() == null) {
                 error = true;
@@ -113,7 +117,12 @@
                     contentType: false,
                     processData: false,
                     success: function (err) {
-                        $(".sys-msg").html(err);
+                        if (err == 0) {
+                            location.href = "view_Companies.html?CompaniesLink="+CompaniesLink;
+                        }
+                        else {
+                            displayError(err);
+                        }
                     }
                 });
             }

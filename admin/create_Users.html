@@ -90,6 +90,7 @@
             let error = false;
             let Name = $("#Name");
             let Email = $("#Email");
+            let CompaniesLink = $("#CompaniesLink").val();
 
             if (Name.val().trim() == "" || Name.val().trim() == null) {
                 error = true;
@@ -110,7 +111,7 @@
                     data: $(this).serialize(),
                     success: function (err) {
                         if (err == 0) {
-                            history.go(-1);
+                            location.href = "view_Companies.html?CompaniesLink="+CompaniesLink;
                         }
                         else {
                             displayError(err);
