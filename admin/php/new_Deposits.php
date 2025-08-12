@@ -12,9 +12,18 @@ if (isset($_POST['Amount'])) {
         //generationg file name
         $extension = explode('.', $file['name']);
         $file_extension = strtolower(end($extension));
-        $new_file_name = uniqid("DpsFl_", true).'.'.$file_extension;
-        $file_path = "./../../Deposits/".$new_file_name;
-        move_uploaded_file($file['tmp_name'], $file_path);
+        
+        $allowed_extensions = array("pdf", "jpg", "jpeg", "png");
+
+        if (in_array($file_extension, $allowed_extensions)) {
+            $new_file_name = uniqid("DpsFl_", true).'.'.$file_extension;
+            $file_path = "./../../Deposits/".$new_file_name;
+            move_uploaded_file($file['tmp_name'], $file_path);    
+        }
+        else {
+            echo "The file format must be PDF, JPG, JPEG or PNG!";
+            die();
+        }
     }
     else {
         $new_file_name = "No files";    
